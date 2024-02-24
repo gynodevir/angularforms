@@ -1,0 +1,38 @@
+<!-- sign-up.component.html -->
+<h1>Signup</h1>
+<form [formGroup]="signupform" (ngSubmit)="submit()">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="username">
+    <div *ngIf="signupform.get('username')?.invalid && signupform.get('username')?.touched">
+      <div *ngIf="signupform.get('username')?.errors?.['required']">Username Required</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email">
+    <div *ngIf="signupform.get('email')?.invalid && signupform.get('email')?.touched">
+      <div *ngIf="signupform.get('email')?.errors?.['required']" class="error">Email Required</div>
+      <div *ngIf="signupform.get('email')?.errors?.['email']" class="error">Invalid Email Format</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+    <div *ngIf="signupform.get('password')?.invalid && signupform.get('password')?.touched">
+      <div *ngIf="signupform.get('password')?.errors?.['required']" class="error">Password Required</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="profilePicture">Profile Picture:</label>
+    <input type="file" id="profilePicture" formControlName="profilePicture" (change)="onFileSelected($event)">
+    <div *ngIf="signupform.get('profilePicture')?.invalid && signupform.get('profilePicture')?.touched">
+        <div *ngIf="signupform.get('profilePicture')?.errors?.['required']">Profile Picture Required</div>
+      </div>
+  </div>
+
+  <button type="submit" [disabled]="signupform.invalid">Submit</button>
+</form>

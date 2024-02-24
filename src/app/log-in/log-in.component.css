@@ -1,0 +1,16 @@
+button {
+    margin-top: 20%;
+    transition: margin-top 1s ease-in-out, background-position 1s ease-in-out;
+   
+    background-size: 200% 100%; /* Double the size for smooth transition effect */
+}
+
+button:hover {
+   
+    background-position: -100% 0; /* Move the gradient to the left */
+    background-image: linear-gradient(to right, rgb(249, 8, 8), rgb(248, 246, 242));
+    color: rgb(243, 242, 241);
+}
+.error{
+    color: red;
+}
